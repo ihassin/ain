@@ -129,7 +129,7 @@ func runTest(filename string, templateContents []byte) error {
 		return fmt.Errorf("stderr %s did not match %s", addBarsBeforeNewlines(stderr.String()), addBarsBeforeNewlines(testDirectives.Stderr))
 	}
 
-	if !strings.Contains(stdout.String(), strings.Join(strings.Fields(testDirectives.Stdout)[:3], " ")) {
+	if stdout.String() != testDirectives.Stdout {
 		return fmt.Errorf("stdout %s did not match %s", addBarsBeforeNewlines(stdout.String()), addBarsBeforeNewlines(testDirectives.Stdout))
 	}
 
